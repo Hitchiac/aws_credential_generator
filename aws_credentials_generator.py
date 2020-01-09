@@ -304,6 +304,8 @@ def generate_credentials(args, profiles):
         #Add Session Token if MFA Configured Account
         if aws_session_token != None:
             config.set(alias, "AWS_SESSION_TOKEN", aws_session_token)
+        else:
+            config.remove_option(alias, "AWS_SESSION_TOKEN")
 
     #Write Credentials to Output File
     with open(arg_outfile, "w+") as outfile:
